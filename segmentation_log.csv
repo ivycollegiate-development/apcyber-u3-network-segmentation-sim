@@ -1,0 +1,62 @@
+timestamp,phase,command,check_id,test_type,source,destination,protocol,port,expected,actual,notes
+2026-11-22 19:47:01,setup,create_vlan 20 STAFF 10.10.20.0/24,VLAN-001,config,simulator,VLAN 20,any,any,PASS,PASS,Created VLAN 20 (STAFF) 10.10.20.0/24 GW=10.10.20.1
+2026-11-22 19:47:01,setup,create_vlan 30 DMZ 10.10.30.0/24,VLAN-001,config,simulator,VLAN 30,any,any,PASS,PASS,Created VLAN 30 (DMZ) 10.10.30.0/24 GW=10.10.30.1
+2026-11-22 19:47:01,setup,create_vlan 40 SERVERS 10.10.40.0/24,VLAN-001,config,simulator,VLAN 40,any,any,PASS,PASS,Created VLAN 40 (SERVERS) 10.10.40.0/24 GW=10.10.40.1
+2026-11-22 19:47:01,setup,create_vlan 50 IOT 10.10.50.0/24,VLAN-001,config,simulator,VLAN 50,any,any,PASS,PASS,Created VLAN 50 (IOT) 10.10.50.0/24 GW=10.10.50.1
+2026-11-22 19:47:01,setup,create_vlan 60 GUEST 10.10.60.0/24,VLAN-001,config,simulator,VLAN 60,any,any,PASS,PASS,Created VLAN 60 (GUEST) 10.10.60.0/24 GW=10.10.60.1
+2026-11-22 19:47:01,setup,create_vlan 10 MGMT 10.10.10.0/24,VLAN-001,config,simulator,VLAN 10,any,any,PASS,PASS,Created VLAN 10 (MGMT) 10.10.10.0/24 GW=10.10.10.1
+2026-11-22 19:47:01,setup,assign_access eth1 20,VLAN-002,config,simulator,Port eth1,any,any,PASS,PASS,Assigned port eth1 to VLAN 20 (STAFF)
+2026-11-22 19:47:01,setup,assign_access eth_web 30,VLAN-002,config,simulator,Port eth_web,any,any,PASS,PASS,Assigned port eth_web to VLAN 30 (DMZ)
+2026-11-22 19:47:01,setup,assign_access eth_email 30,VLAN-002,config,simulator,Port eth_email,any,any,PASS,PASS,Assigned port eth_email to VLAN 30 (DMZ)
+2026-11-22 19:47:01,setup,assign_access eth_files 40,VLAN-002,config,simulator,Port eth_files,any,any,PASS,PASS,Assigned port eth_files to VLAN 40 (SERVERS)
+2026-11-22 19:47:01,setup,assign_access eth_cam1 50,VLAN-002,config,simulator,Port eth_cam1,any,any,PASS,PASS,Assigned port eth_cam1 to VLAN 50 (IOT)
+2026-11-22 19:47:01,setup,assign_access eth_cam2 50,VLAN-002,config,simulator,Port eth_cam2,any,any,PASS,PASS,Assigned port eth_cam2 to VLAN 50 (IOT)
+2026-11-22 19:47:01,setup,assign_access eth_guest_ap 60,VLAN-002,config,simulator,Port eth_guest_ap,any,any,PASS,PASS,Assigned port eth_guest_ap to VLAN 60 (GUEST)
+2026-11-22 19:47:01,setup,"assign_trunk eth_fw_lan [10, 20, 30, 40, 50, 60]",VLAN-003,config,simulator,Trunk eth_fw_lan,any,any,PASS,PASS,"Configured trunk eth_fw_lan with VLANs [10, 20, 30, 40, 50, 60]"
+2026-11-22 19:47:01,setup,enable_routing,ROUTE-001,config,core_switch,all VLANs,any,any,PASS,PASS,Enabled inter-VLAN routing; SVIs created for all VLANs
+2026-11-22 19:47:01,setup,fw_rule DMZ INTERNET tcp 80 allow,FW-001,config,DMZ,INTERNET,tcp,80,PASS,PASS,Added firewall rule #1
+2026-11-22 19:47:01,setup,fw_rule DMZ INTERNET tcp 443 allow,FW-002,config,DMZ,INTERNET,tcp,443,PASS,PASS,Added firewall rule #2
+2026-11-22 19:47:01,setup,fw_rule DMZ INTERNET tcp 25 allow,FW-003,config,DMZ,INTERNET,tcp,25,PASS,PASS,Added firewall rule #3
+2026-11-22 19:47:01,setup,fw_rule DMZ INTERNET tcp 587 allow,FW-004,config,DMZ,INTERNET,tcp,587,PASS,PASS,Added firewall rule #4
+2026-11-22 19:47:01,setup,fw_rule DMZ SERVERS any any deny,FW-005,config,DMZ,SERVERS,any,any,PASS,PASS,Added firewall rule #5
+2026-11-22 19:47:01,setup,fw_rule DMZ STAFF any any deny,FW-006,config,DMZ,STAFF,any,any,PASS,PASS,Added firewall rule #6
+2026-11-22 19:47:01,setup,fw_rule DMZ IOT any any deny,FW-007,config,DMZ,IOT,any,any,PASS,PASS,Added firewall rule #7
+2026-11-22 19:47:01,setup,fw_rule DMZ GUEST any any deny,FW-008,config,DMZ,GUEST,any,any,PASS,PASS,Added firewall rule #8
+2026-11-22 19:47:01,setup,fw_rule STAFF DMZ tcp 80 allow,FW-009,config,STAFF,DMZ,tcp,80,PASS,PASS,Added firewall rule #9
+2026-11-22 19:47:01,setup,fw_rule STAFF DMZ tcp 443 allow,FW-010,config,STAFF,DMZ,tcp,443,PASS,PASS,Added firewall rule #10
+2026-11-22 19:47:01,setup,fw_rule STAFF SERVERS tcp 445 allow,FW-011,config,STAFF,SERVERS,tcp,445,PASS,PASS,Added firewall rule #11
+2026-11-22 19:47:01,setup,fw_rule STAFF SERVERS tcp 2049 allow,FW-012,config,STAFF,SERVERS,tcp,2049,PASS,PASS,Added firewall rule #12
+2026-11-22 19:47:01,setup,fw_rule STAFF IOT any any deny,FW-013,config,STAFF,IOT,any,any,PASS,PASS,Added firewall rule #13
+2026-11-22 19:47:01,setup,fw_rule GUEST STAFF any any deny,FW-014,config,GUEST,STAFF,any,any,PASS,PASS,Added firewall rule #14
+2026-11-22 19:47:01,setup,fw_rule GUEST DMZ any any deny,FW-015,config,GUEST,DMZ,any,any,PASS,PASS,Added firewall rule #15
+2026-11-22 19:47:01,setup,fw_rule GUEST SERVERS any any deny,FW-016,config,GUEST,SERVERS,any,any,PASS,PASS,Added firewall rule #16
+2026-11-22 19:47:01,setup,fw_rule GUEST IOT any any deny,FW-017,config,GUEST,IOT,any,any,PASS,PASS,Added firewall rule #17
+2026-11-22 19:47:01,setup,fw_rule IOT INTERNET any any deny,FW-018,config,IOT,INTERNET,any,any,PASS,PASS,Added firewall rule #18
+2026-11-22 19:47:01,setup,fw_rule MGMT STAFF any any deny,FW-019,config,MGMT,STAFF,any,any,PASS,PASS,Added firewall rule #19
+2026-11-22 19:47:01,setup,fw_rule MGMT DMZ any any deny,FW-020,config,MGMT,DMZ,any,any,PASS,PASS,Added firewall rule #20
+2026-11-22 19:47:01,setup,fw_rule MGMT SERVERS any any deny,FW-021,config,MGMT,SERVERS,any,any,PASS,PASS,Added firewall rule #21
+2026-11-22 19:47:01,setup,fw_rule MGMT IOT any any deny,FW-022,config,MGMT,IOT,any,any,PASS,PASS,Added firewall rule #22
+2026-11-22 19:47:01,setup,fw_rule MGMT GUEST any any deny,FW-023,config,MGMT,GUEST,any,any,PASS,PASS,Added firewall rule #23
+2026-11-22 19:47:01,setup,fw_rule MGMT INTERNET any any deny,FW-024,config,MGMT,INTERNET,any,any,PASS,PASS,Added firewall rule #24
+2026-11-22 19:47:01,setup,verify_port 10.10.30.10 8.8.8.8 80,VERIFY,verify_port,10.10.30.10,8.8.8.8,tcp,80,PASS,PASS,Allowed by firewall: Rule #1: DMZ→INTERNET tcp 80 allow
+2026-11-22 19:47:01,setup,verify_port 10.10.30.10 8.8.8.8 443,VERIFY,verify_port,10.10.30.10,8.8.8.8,tcp,443,PASS,PASS,Allowed by firewall: Rule #2: DMZ→INTERNET tcp 443 allow
+2026-11-22 19:47:01,setup,verify_port 10.10.30.11 8.8.8.8 25,VERIFY,verify_port,10.10.30.11,8.8.8.8,tcp,25,PASS,PASS,Allowed by firewall: Rule #3: DMZ→INTERNET tcp 25 allow
+2026-11-22 19:47:01,setup,verify_port 10.10.30.11 8.8.8.8 587,VERIFY,verify_port,10.10.30.11,8.8.8.8,tcp,587,PASS,PASS,Allowed by firewall: Rule #4: DMZ→INTERNET tcp 587 allow
+2026-11-22 19:47:01,setup,verify_port 10.10.30.10 10.10.40.20 445,VERIFY,verify_port,10.10.30.10,10.10.40.20,tcp,445,PASS,FAIL,Blocked by firewall: Rule #5: DMZ→SERVERS any any deny
+2026-11-22 19:47:01,setup,verify_ping 10.10.30.10 10.10.20.101,VERIFY,verify_ping,10.10.30.10,10.10.20.101,icmp,any,PASS,FAIL,Blocked by firewall: Rule #6: DMZ→STAFF any any deny
+2026-11-22 19:47:01,setup,verify_ping 10.10.30.10 10.10.50.201,VERIFY,verify_ping,10.10.30.10,10.10.50.201,icmp,any,PASS,FAIL,Blocked by firewall: Rule #7: DMZ→IOT any any deny
+2026-11-22 19:47:01,setup,verify_ping 10.10.30.10 10.10.60.151,VERIFY,verify_ping,10.10.30.10,10.10.60.151,icmp,any,PASS,FAIL,Blocked by firewall: Unknown VLAN for source or destination
+2026-11-22 19:47:01,setup,verify_port 10.10.20.101 10.10.30.10 80,VERIFY,verify_port,10.10.20.101,10.10.30.10,tcp,80,PASS,PASS,Allowed by firewall: Rule #9: STAFF→DMZ tcp 80 allow
+2026-11-22 19:47:01,setup,verify_port 10.10.20.101 10.10.30.10 443,VERIFY,verify_port,10.10.20.101,10.10.30.10,tcp,443,PASS,PASS,Allowed by firewall: Rule #10: STAFF→DMZ tcp 443 allow
+2026-11-22 19:47:01,setup,verify_port 10.10.20.101 10.10.40.20 445,VERIFY,verify_port,10.10.20.101,10.10.40.20,tcp,445,PASS,PASS,Allowed by firewall: Rule #11: STAFF→SERVERS tcp 445 allow
+2026-11-22 19:47:01,setup,verify_port 10.10.20.101 10.10.40.20 2049,VERIFY,verify_port,10.10.20.101,10.10.40.20,tcp,2049,PASS,PASS,Allowed by firewall: Rule #12: STAFF→SERVERS tcp 2049 allow
+2026-11-22 19:47:01,setup,verify_ping 10.10.20.101 10.10.50.201,VERIFY,verify_ping,10.10.20.101,10.10.50.201,icmp,any,PASS,FAIL,Blocked by firewall: Rule #13: STAFF→IOT any any deny
+2026-11-22 19:47:01,setup,verify_ping 10.10.60.151 10.10.20.101,VERIFY,verify_ping,10.10.60.151,10.10.20.101,icmp,any,PASS,FAIL,Blocked by firewall: Unknown VLAN for source or destination
+2026-11-22 19:47:01,setup,verify_ping 10.10.60.151 10.10.30.10,VERIFY,verify_ping,10.10.60.151,10.10.30.10,icmp,any,PASS,FAIL,Blocked by firewall: Unknown VLAN for source or destination
+2026-11-22 19:47:01,setup,verify_port 10.10.60.151 10.10.40.20 445,VERIFY,verify_port,10.10.60.151,10.10.40.20,tcp,445,PASS,FAIL,Blocked by firewall: Unknown VLAN for source or destination
+2026-11-22 19:47:01,setup,verify_ping 10.10.60.151 10.10.50.201,VERIFY,verify_ping,10.10.60.151,10.10.50.201,icmp,any,PASS,FAIL,Blocked by firewall: Unknown VLAN for source or destination
+2026-11-22 19:47:01,setup,verify_port 10.10.50.201 8.8.8.8 53,VERIFY,verify_port,10.10.50.201,8.8.8.8,tcp,53,PASS,FAIL,Blocked by firewall: Rule #18: IOT→INTERNET any any deny
+2026-11-22 19:47:01,setup,verify_ping 10.10.10.1 10.10.20.101,VERIFY,verify_ping,10.10.10.1,10.10.20.101,icmp,any,PASS,FAIL,Blocked by firewall: Implicit deny (no matching rule)
+2026-11-22 19:47:01,setup,verify_ping 10.10.10.1 10.10.30.10,VERIFY,verify_ping,10.10.10.1,10.10.30.10,icmp,any,PASS,FAIL,Blocked by firewall: Implicit deny (no matching rule)
+2026-11-22 19:47:01,setup,verify_ping 10.10.20.101 10.10.20.102,VERIFY,verify_ping,10.10.20.101,10.10.20.102,icmp,any,PASS,FAIL,Blocked by firewall: Unknown VLAN for source or destination
+2026-11-22 19:47:01,setup,verify_ping 10.10.50.201 10.10.50.202,VERIFY,verify_ping,10.10.50.201,10.10.50.202,icmp,any,PASS,PASS,Same VLAN (Layer 2)
